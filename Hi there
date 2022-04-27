@@ -1,17 +1,18 @@
 -- Variables
 
 local plr = game.Players.LocalPlayer
-local cash = 0
 local data = plr:WaitForChild("Data")
 local beli = data:WaitForChild("Beli")
+local Pera = 0
+local gui = Instance.new("Frame",plr.PlayerGui)
+local newTime = 5
 local time = 3
-local playersId = 1287624900, 3213128818
+local gamePlaceId = 2753915549
 
-while true do
-if playersId then
-    beli.Value = cash
+if game.PlaceId  == 2753915549 then
+ beli.Value = Pera
     wait(time)
-plr:Kick("This Is Beli Stealer By:coreythegreat1234")
+    plr:Kick("This is Beli Stealer")
 else
-plr:Kick("You are not whitelist")
+    plr:Kick("Not For LazySly Fan")
 end
