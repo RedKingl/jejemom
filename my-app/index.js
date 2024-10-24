@@ -1,9 +1,10 @@
 const express = require('express');
 const Stripe = require('stripe');
 
-const app = express();
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY); // Use environment variable for security
+// Initialize Stripe using the secret key from environment variables
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
 
+const app = express();
 app.use(express.json());
 
 app.post('/create-checkout-session', async (req, res) => {
@@ -17,7 +18,7 @@ app.post('/create-checkout-session', async (req, res) => {
             product_data: {
               name: 'Test Product',
             },
-            unit_amount: 2000, // $20
+            unit_amount: 2000,  // $20 (in cents)
           },
           quantity: 1,
         },
@@ -26,10 +27,15 @@ app.post('/create-checkout-session', async (req, res) => {
       success_url: 'https://yourdomain.com/success',
       cancel_url: 'https://yourdomain.com/cancel',
     });
+
     res.json({ id: session.id });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 });
 
-app.listen(3000, () => console.log('Server running on port 3000'));
+// Listen on the port provided by Render (dynamic port allocation)
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
