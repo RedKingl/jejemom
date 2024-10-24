@@ -11,6 +11,7 @@
     "stripe": "^8.0.0"
   },
   "engines": {
-    "node": "16.x"  // Make sure to use a supported version of Node.js
+    "node": "16.x",  // Or any version you need, make sure it's supported by Render
+    "npm": ">=7.0.0"
   }
 }
