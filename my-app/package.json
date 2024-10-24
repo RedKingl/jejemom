@@ -1,6 +1,7 @@
 {
   "name": "stripe-checkout-app",
   "version": "1.0.0",
+  "description": "Simple Node.js app with Stripe integration",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
@@ -8,5 +9,8 @@
   "dependencies": {
     "express": "^4.17.1",
     "stripe": "^8.0.0"
+  },
+  "engines": {
+    "node": "16.x"  // Make sure to use a supported version of Node.js
   }
 }
